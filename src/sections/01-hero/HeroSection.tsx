@@ -23,7 +23,9 @@ const HeroSection = () => {
           </div>
 
           <div className='flex flex-col gap-8 md:max-w-120 '>
-            <p className='text-[50px] font-sans leading-tight'>{hero.title}</p>
+            <h1 className='text-[50px] font-sans leading-tight'>
+              {hero.title}
+            </h1>
             <p className='font-georgia text-[16px] md:max-w-85'>
               {hero.description}
             </p>

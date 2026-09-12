@@ -17,9 +17,9 @@ const WhyManhattanSection = () => {
           className='size-full object-cover object-top sm:min-w-400 xl:min-w-450'
         />
       </div>
-      <p className='text-[50px] sm:text-[83px] font-bold text-white '>
+      <h2 className='text-[50px] sm:text-[83px] font-bold text-white '>
         {title}
-      </p>
+      </h2>
       <div className='bg-white flex flex-col gap-10 py-10 px-4 max-w-160'>
         {articles.map((article) => (
           <div key={article.id} className='flex flex-col gap-2 font-sans'>

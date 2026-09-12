@@ -1,7 +1,7 @@
 import { cn } from 'cn';
 import type { ReactNode } from 'react';
 
-type SectionId = 'home' | 'about' | 'reviews' | 'team' | 'connect';
+type SectionId = 'home' | 'about' | 'reviews' | 'faqs' | 'connect';
 
 interface SectionWrapperProps {
   sectionId: SectionId;
