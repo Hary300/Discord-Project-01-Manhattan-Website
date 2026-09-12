@@ -17,7 +17,9 @@ const FaqsSection = () => {
       sectionId='faqs'
       className='py-10 lg:py-20 flex flex-col gap-10'
     >
-      <h2 className='text-[72px] font-bold text-green-primary'>{title}</h2>
+      <h2 className='text-[50px] lg:text-[72px] font-bold text-green-primary'>
+        {title}
+      </h2>
       <div className='flex flex-col lg:flex-row gap-4'>
         <Accordion
           type='single'

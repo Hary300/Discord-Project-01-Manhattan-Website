@@ -11,7 +11,9 @@ const ContactSection = () => {
       sectionId='connect'
       className='py-10 lg:py-20 flex flex-col gap-10'
     >
-      <h2 className='text-[72px] font-bold text-green-primary'>{title}</h2>
+      <h2 className='text-[50px] lg:text-[72px] font-bold text-green-primary'>
+        {title}
+      </h2>
       <div className='flex flex-col md:flex-row gap-4'>
         {contactInfo.map((item) => (
           <div
@@ -42,7 +44,7 @@ const ContactSection = () => {
           style={{ border: 0 }}
           loading='lazy'
           referrerPolicy='strict-origin-when-cross-origin'
-          className='w-full'
+          className='w-full h-100 sm:h-auto'
         ></iframe>
       </div>
     </SectionWrapper>
