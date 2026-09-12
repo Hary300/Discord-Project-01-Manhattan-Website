@@ -5,6 +5,8 @@ import incLogo from '@/assets/images/company/incLogo.png';
 import moneyLogo from '@/assets/images/company/moneyLogo.png';
 import theStreetLogo from '@/assets/images/company/theStreetLogo.png';
 
+type PartnerId = 'forbes' | 'the-street' | 'money' | 'inc' | 'cnbc';
+
 interface LogoData {
   textPrimary: string;
   textSecondary: string;
@@ -22,7 +24,7 @@ interface HeroContent {
 }
 
 interface PartnerLogo {
-  id: string;
+  id: PartnerId;
   name: string;
   src: string;
   alt: string;
