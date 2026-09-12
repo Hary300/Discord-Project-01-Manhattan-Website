@@ -13,11 +13,11 @@ const HeroSection = () => {
     >
       <div className='flex flex-col md:flex-row gap-8 md:gap-4 md:pl-10 lg:pl-15 xl:pl-30'>
         <div className='pt-6.5 relative flex flex-col gap-13 text-white'>
-          <div className='flex flex-col px-5 py-3.75 bg-white w-fit font-medium items-center'>
-            <p className='text-[60px] leading-15 text-green-primary text-center'>
+          <div className='flex flex-col px-4 sm:px-5 py-3 sm:py-3.75 bg-white w-fit font-medium items-center'>
+            <p className='text-[35px] sm:text-[60px] leading-10 sm:leading-15 text-green-primary text-center'>
               {logo.textPrimary}
             </p>
-            <p className='text-[30px] text-green-primary/30 tracking-[6px]'>
+            <p className='text-[20px] sm:text-[30px] text-green-primary/30 tracking-[3px] sm:tracking-[6px]'>
               {logo.textSecondary}
             </p>
           </div>
