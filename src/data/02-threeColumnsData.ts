@@ -4,11 +4,11 @@ interface FeatureItem {
   description: string;
 }
 
-interface FeaturesSectionData {
+interface ThreeColumnsData {
   features: FeatureItem[];
 }
 
-export const featuresSectionData: FeaturesSectionData = {
+export const threeColumnsData: ThreeColumnsData = {
   features: [
     {
       id: 'landlord',
