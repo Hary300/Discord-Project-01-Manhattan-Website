@@ -7,20 +7,19 @@ import { useEffect, useState } from 'react';
 import { cn } from 'cn';
 
 const Header = () => {
-  const [isOverHero, setIsOverHero] = useState(false);
+  const [isOverSelectedSection, setIsOverSelectedSection] = useState(false);
 
   useEffect(() => {
-    const targetElement = document.getElementById('home');
+    const hero = document.getElementById('home');
 
-    const obverse = new IntersectionObserver(
-      ([entry]) => {
-        setIsOverHero(!entry.isIntersecting);
-      },
-      { threshold: 0.001 }
+    console.log(hero);
+
+    const obverse = new IntersectionObserver(([entry]) =>
+      setIsOverSelectedSection(!entry.isIntersecting)
     );
 
-    if (targetElement) {
-      obverse.observe(targetElement);
+    if (hero) {
+      obverse.observe(hero);
     }
 
     return () => {
@@ -31,8 +30,7 @@ const Header = () => {
   return (
     <header
       className={cn(
-        'fixed w-full flex justify-end max-w-360 mx-auto z-50 text-white pr-4 sm:pr-10 xl:pr-20 pt-7',
-        isOverHero && 'text-foreground'
+        'fixed w-full flex justify-end max-w-360 mx-auto z-50 pr-4 sm:pr-10 xl:pr-20 pt-7'
       )}
     >
       <nav className='hidden lg:flex w-full max-w-140 py-4 px-6 rounded-2xl backdrop-blur-2xl'>
@@ -42,7 +40,10 @@ const Header = () => {
               {' '}
               <a
                 href={link.href}
-                className='text-[23px] font-sans font-semibold hover:underline'
+                className={cn(
+                  'text-[23px] font-sans font-semibold hover:underline text-white',
+                  isOverSelectedSection && 'text-foreground'
+                )}
               >
                 {link.label}
               </a>
@@ -55,8 +56,8 @@ const Header = () => {
         <SheetTrigger asChild>
           <Button
             className={cn(
-              'lg:hidden bg-transparent backdrop-blur-2xl h-16',
-              isOverHero && 'text-foreground'
+              'lg:hidden bg-transparent backdrop-blur-2xl h-16 text-white',
+              isOverSelectedSection && 'text-foreground'
             )}
           >
             <HiMenu className='size-10 ' />
