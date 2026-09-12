@@ -2,6 +2,10 @@ import phoneIcon from '@/assets/images/contact/phone.png';
 import mailIcon from '@/assets/images/contact/mail.png';
 import locationIcon from '@/assets/images/contact/location.png';
 
+export type ContactFieldName = 'name' | 'email' | 'message';
+export type ContactFieldLabel = 'Name' | 'Email' | 'Message';
+export type ContactFieldType = 'text' | 'email' | 'textarea';
+
 interface ContactInfoItem {
   id: string;
   type: 'phone' | 'email' | 'address';
@@ -12,13 +16,13 @@ interface ContactInfoItem {
 
 interface FormField {
   id: string;
-  name: string;
-  label: string;
-  type: 'text' | 'email' | 'textarea';
+  name: ContactFieldName;
+  label: ContactFieldLabel;
+  type: ContactFieldType;
   placeholder: string;
 }
 
-interface ContactSectionData {
+interface ContactData {
   title: string;
   contactInfo: ContactInfoItem[];
   formFields: FormField[];
@@ -26,7 +30,7 @@ interface ContactSectionData {
   mapEmbedUrl: string;
 }
 
-export const contactSectionData: ContactSectionData = {
+export const contactData: ContactData = {
   title: 'CONTACT',
   contactInfo: [
     {
