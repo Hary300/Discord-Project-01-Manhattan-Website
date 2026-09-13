@@ -7,28 +7,43 @@ import { useEffect, useState } from 'react';
 import { cn } from 'cn';
 
 const Header = () => {
-  const [isOverSelectedSection, setIsOverSelectedSection] = useState(false);
+  const [isOutsideSelectedSection, setIsOutsideSelectedSection] =
+    useState(false);
 
   useEffect(() => {
-    const hero = document.getElementById('home');
+    const handleScroll = () => {
+      const header = document.getElementById('header');
 
-    console.log(hero);
+      const navbarHeight = header?.offsetHeight ?? 0;
 
-    const obverse = new IntersectionObserver(([entry]) =>
-      setIsOverSelectedSection(!entry.isIntersecting)
-    );
+      const navbarBottom = window.scrollY + navbarHeight;
 
-    if (hero) {
-      obverse.observe(hero);
-    }
+      const isOutsideSection = (elementId: string) => {
+        const el = document.getElementById(elementId);
+        if (!el) return false;
+        const sectionTop = el.offsetTop;
+        const sectionBottom = sectionTop + el.offsetHeight;
+
+        return navbarBottom < sectionTop || navbarBottom > sectionBottom;
+      };
+
+      const isOutsideHome = isOutsideSection('home');
+      const isOutsideReviews = isOutsideSection('reviews');
+
+      setIsOutsideSelectedSection(isOutsideHome && isOutsideReviews);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
 
     return () => {
-      obverse.disconnect();
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
     <header
+      id='header'
       className={cn(
         'fixed w-full flex justify-end max-w-360 mx-auto z-50 pr-4 sm:pr-10 xl:pr-20 pt-7'
       )}
@@ -37,12 +52,11 @@ const Header = () => {
         <ul className='flex justify-between w-full '>
           {navData.map((link) => (
             <li key={link.id}>
-              {' '}
               <a
                 href={link.href}
                 className={cn(
                   'text-[23px] font-sans font-semibold hover:underline text-white',
-                  isOverSelectedSection && 'text-foreground'
+                  isOutsideSelectedSection && 'text-foreground'
                 )}
               >
                 {link.label}
@@ -57,7 +71,7 @@ const Header = () => {
           <Button
             className={cn(
               'lg:hidden bg-transparent backdrop-blur-2xl h-16 text-white',
-              isOverSelectedSection && 'text-foreground'
+              isOutsideSelectedSection && 'text-foreground'
             )}
           >
             <HiMenu className='size-10 ' />
